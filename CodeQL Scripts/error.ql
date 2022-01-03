@@ -1,9 +1,3 @@
-/**
-* @name Error
-* @kind path-problem
-* @id js/xss-unsafe-plugin
-*/
-
 import javascript
 import DataFlow::PathGraph
 import DataFlow
