@@ -1,8 +1,8 @@
 
 /**
-* @name Cross-site scripting
+* @name Taint Analysis Node-RED
 * @kind path-problem
-* @id js/xss-unsafe-plugin
+* @id js/taint
 
 */
 
@@ -12,7 +12,7 @@ import DataFlow
 
 
 class MyConfig extends TaintTracking::Configuration {
-  MyConfig() { this = "XssUnsafeJQueryPlugin" }
+  MyConfig() { this = "Taint Analysis" }
 
   override predicate isSource(DataFlow::Node source) { 
     any() }
@@ -161,5 +161,4 @@ class MyConfig extends TaintTracking::Configuration {
 from MyConfig cfg, DataFlow::PathNode source, DataFlow::PathNode sink
 where cfg.hasFlowPath(source, sink) and
 source.getNode() != sink.getNode()
-//select sink, source, sink, "Potential XSS vulnerability."
 select sink.getNode(), source, sink, "taint from $@.", source.getNode(), "here"
